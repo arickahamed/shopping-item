@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="valueA" type="text" class="form-control text-center" value="1">
+                           <button id="lossNumA" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="valueA" type="text" class="form-control text-center" value="0">
                            <button id="addNumA" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id="amountA">00</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="lossNumB" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="valueB" type="text" class="form-control text-center" value="0">
+                           <button id="addNumB" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="amountB">00</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -79,6 +79,61 @@
    </section>
       
    <script>
+      // add button handeler .
+      const addBtn1 = document.getElementById("addNumA");
+      addBtn1.addEventListener("click", function(){
+         const valueA = document.getElementById("valueA").value;
+         const numA = Number(valueA);
+         const resultA = numA + 1;
+         document.getElementById("valueA").value = resultA;
+
+         const currentAmountA = document.getElementById("amountA").innerText;
+         const amountNumberA = Number(currentAmountA);
+         const updateAmountA = amountNumberA + 1219;
+         document.getElementById("amountA").innerText = updateAmountA;
+
+      })
+
+      const addBtn2 = document.getElementById("addNumB");
+      addBtn2.addEventListener("click", function(){
+         const valueB = document.getElementById("valueB").value;
+         const numB = Number(valueB);
+         const resultB = numB + 1;
+         document.getElementById("valueB").value = resultB;
+
+         const currentAmountB = document.getElementById("amountB").innerText;
+         const amountNumberB = Number(currentAmountB);
+         const updateAmountB = amountNumberB + 59;
+         document.getElementById("amountB").innerText = updateAmountB;
+      })
+
+      // // loss button handeler .
+      const lossBtn1 = document.getElementById("lossNumA");
+      lossBtn1.addEventListener("click", function(){
+         const valueA = document.getElementById("valueA").value;
+         const numA = Number(valueA);
+         const resultA = numA - 1;
+         document.getElementById("valueA").value = resultA;
+
+         const currentAmountA = document.getElementById("amountA").innerText;
+         const amountNumberA = Number(currentAmountA);
+         const updateAmountA = amountNumberA - 1219;
+         document.getElementById("amountA").innerText = updateAmountA;
+      })
+      
+      const lossBtn2 = document.getElementById("lossNumB");
+      lossBtn2.addEventListener("click", function(){
+         const valueB = document.getElementById("valueB").value;
+         const numB = Number(valueB);
+         const resultB = numB - 1;
+         document.getElementById("valueB").value = resultB;
+
+         const currentAmountB = document.getElementById("amountB").innerText;
+         const amountNumberB = Number(currentAmountB);
+         const updateAmountB = amountNumberB - 59;
+         document.getElementById("amountB").innerText = updateAmountB;
+      })
+
 
    </script>
 </body>
