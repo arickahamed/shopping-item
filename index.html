@@ -64,14 +64,14 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$<span id="total">1,278</span></h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
                   </div>
                </div>
                <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  <button id="check" type="button" class="btn btn-success check-out">Check Out</button>
                </div>
             </div>
          </div>
@@ -79,62 +79,64 @@
    </section>
       
    <script>
-      // add button handeler .
+      // add button handeler ....
+
       const addBtn1 = document.getElementById("addNumA");
-      addBtn1.addEventListener("click", function(){
-         const valueA = document.getElementById("valueA").value;
-         const numA = Number(valueA);
-         const resultA = numA + 1;
-         document.getElementById("valueA").value = resultA;
-
-         const currentAmountA = document.getElementById("amountA").innerText;
-         const amountNumberA = Number(currentAmountA);
-         const updateAmountA = amountNumberA + 1219;
-         document.getElementById("amountA").innerText = updateAmountA;
-
+      addBtn1.addEventListener("click", function add1(){
+         updateSpanText1("valueA");
+         updateSpanText3("amountA", extra = 1219);
       })
 
       const addBtn2 = document.getElementById("addNumB");
-      addBtn2.addEventListener("click", function(){
-         const valueB = document.getElementById("valueB").value;
-         const numB = Number(valueB);
-         const resultB = numB + 1;
-         document.getElementById("valueB").value = resultB;
-
-         const currentAmountB = document.getElementById("amountB").innerText;
-         const amountNumberB = Number(currentAmountB);
-         const updateAmountB = amountNumberB + 59;
-         document.getElementById("amountB").innerText = updateAmountB;
+      addBtn2.addEventListener("click", function add2(){
+         updateSpanText1("valueB");
+         updateSpanText3("amountB", extra = 59);
       })
 
-      // // loss button handeler .
+      function updateSpanText1(id){
+         const value = document.getElementById(id).value;
+         const num = Number(value);
+         const result = num + 1;
+         document.getElementById(id).value = result;
+      }
+
+      function updateSpanText3(id, extra){
+         const currentAmount = document.getElementById(id).innerText;
+         const amountNumber = Number(currentAmount);
+         const updateAmount = amountNumber + extra;
+         document.getElementById(id).innerText = updateAmount;
+      }
+
+      // // loss button handeler ....
       const lossBtn1 = document.getElementById("lossNumA");
       lossBtn1.addEventListener("click", function(){
-         const valueA = document.getElementById("valueA").value;
-         const numA = Number(valueA);
-         const resultA = numA - 1;
-         document.getElementById("valueA").value = resultA;
-
-         const currentAmountA = document.getElementById("amountA").innerText;
-         const amountNumberA = Number(currentAmountA);
-         const updateAmountA = amountNumberA - 1219;
-         document.getElementById("amountA").innerText = updateAmountA;
+            updateSpanText2("valueA");
+            updateSpanText4("amountA", extra = -1 * 1219); 
       })
       
       const lossBtn2 = document.getElementById("lossNumB");
       lossBtn2.addEventListener("click", function(){
-         const valueB = document.getElementById("valueB").value;
-         const numB = Number(valueB);
-         const resultB = numB - 1;
-         document.getElementById("valueB").value = resultB;
-
-         const currentAmountB = document.getElementById("amountB").innerText;
-         const amountNumberB = Number(currentAmountB);
-         const updateAmountB = amountNumberB - 59;
-         document.getElementById("amountB").innerText = updateAmountB;
+            updateSpanText2("valueB");
+            updateSpanText4("amountB", extra = -1 * 59);
       })
 
+      function updateSpanText2(id){
+         const value = document.getElementById(id).value;
+         const num = Number(value);
+         if(num > 0) {
+            const result = num - 1;
+            document.getElementById(id).value = result;
+         }
+      }
 
+      function updateSpanText4(id, extra){
+         const currentAmount = document.getElementById(id).innerText;
+         const amountNumber = Number(currentAmount);
+         if (amountNumber > 0) {
+            const updateAmount = amountNumber + extra;
+            document.getElementById(id).innerText = updateAmount;
+         }
+      }
    </script>
 </body>
 
