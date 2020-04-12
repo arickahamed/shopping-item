@@ -64,7 +64,7 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$<span id="total">1,278</span></h5>
+                        <h5>$<span id="subTotal">00</span></h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
@@ -80,7 +80,6 @@
       
    <script>
       // add button handeler ....
-
       const addBtn1 = document.getElementById("addNumA");
       addBtn1.addEventListener("click", function add1(){
          updateSpanText1("valueA");
@@ -105,6 +104,7 @@
          const amountNumber = Number(currentAmount);
          const updateAmount = amountNumber + extra;
          document.getElementById(id).innerText = updateAmount;
+         return updateAmount;
       }
 
       // // loss button handeler ....
@@ -133,10 +133,23 @@
          const currentAmount = document.getElementById(id).innerText;
          const amountNumber = Number(currentAmount);
          if (amountNumber > 0) {
-            const updateAmount = amountNumber + extra;
-            document.getElementById(id).innerText = updateAmount;
+            const updateAmount2 = amountNumber + extra;
+            document.getElementById(id).innerText = updateAmount2;
+            return updateAmount2;
          }
       }
+
+     //check button handler...
+     const checkBtn = document.getElementById("check");
+     checkBtn.addEventListener("click", function(){
+      const current = document.getElementById("subTotal").innerText;
+      const currentNum = Number(current);
+      const addedAmount = updateSpanText3("amountA", extra = 1219 ,"amountB", extra = 59 );
+      const lostAmount = updateSpanText4("amountA", extra = -1 * 1219 ,"amountB", extra = -1 * 59 );
+      const updateAmount = addedAmount + lostAmount;
+      const total = currentNum + updateAmount;
+      document.getElementById("subTotal").innerText = total;
+     })
    </script>
 </body>
 
