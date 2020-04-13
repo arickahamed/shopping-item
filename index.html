@@ -66,7 +66,7 @@
                      <div class="col-md-4 status">
                         <h5>$<span id="subTotal">00</span></h5>
                         <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id="total">00</span></h5>
                      </div>
                   </div>
                </div>
@@ -84,12 +84,14 @@
       addBtn1.addEventListener("click", function add1(){
          updateSpanText1("valueA");
          updateSpanText3("amountA", extra = 1219);
+
+         
       })
 
       const addBtn2 = document.getElementById("addNumB");
       addBtn2.addEventListener("click", function add2(){
          updateSpanText1("valueB");
-         updateSpanText3("amountB", extra = 59);
+         updateSpanText3("amountB", extra = 59, "subTotal");
       })
 
       function updateSpanText1(id){
@@ -104,7 +106,11 @@
          const amountNumber = Number(currentAmount);
          const updateAmount = amountNumber + extra;
          document.getElementById(id).innerText = updateAmount;
-         return updateAmount;
+
+         const currentSubTotal = document.getElementById("subTotal").innerText;
+         const currentSubTotalNum = Number(currentSubTotal);
+         const updateSubTotal = currentSubTotalNum + updateAmount;
+         document.getElementById("subTotal").innerText = updateSubTotal;
       }
 
       // // loss button handeler ....
@@ -135,21 +141,15 @@
          if (amountNumber > 0) {
             const updateAmount2 = amountNumber + extra;
             document.getElementById(id).innerText = updateAmount2;
-            return updateAmount2;
+            
+            const currentSubTotal = document.getElementById("subTotal").innerText;
+            const currentSubTotalNum = Number(currentSubTotal);
+            const updateSubTotal2 = updateAmount2 - currentSubTotalNum;
+            document.getElementById("subTotal").innerText = updateSubTotal2;
          }
       }
 
      //check button handler...
-     const checkBtn = document.getElementById("check");
-     checkBtn.addEventListener("click", function(){
-      const current = document.getElementById("subTotal").innerText;
-      const currentNum = Number(current);
-      const addedAmount = updateSpanText3("amountA", extra = 1219 ,"amountB", extra = 59 );
-      const lostAmount = updateSpanText4("amountA", extra = -1 * 1219 ,"amountB", extra = -1 * 59 );
-      const updateAmount = addedAmount + lostAmount;
-      const total = currentNum + updateAmount;
-      document.getElementById("subTotal").innerText = total;
-     })
    </script>
 </body>
 
